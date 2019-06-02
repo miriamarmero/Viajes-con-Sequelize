@@ -1,0 +1,21 @@
+{
+  "name": "viajes",
+  "description": "",
+  "main": "",
+  "authors": [
+    "Miriam Armero <norma.armero@gmail.com>"
+  ],
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "./public/components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^4.3.1"
+  }
+}

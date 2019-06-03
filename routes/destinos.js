@@ -13,7 +13,7 @@ router.get('/', async (req, res) => {
 
 // Post que se llama desde el formulario
 router.post('/', async (req, res) => {
-    let result = await travelsController.addDestino(req.body);
+    let result = await travelsController.addDestino(req.body.destino, req.body.precio, req.body.descuento, req.body.ruta_imagen, req.body.fecha_inicio, req.body.fecha_fin);
     res.render('destinos/added', {result});
 })
 

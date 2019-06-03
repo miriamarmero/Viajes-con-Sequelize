@@ -21,6 +21,7 @@ router.post('/login', async (req, res) => {
     req.session.email = user.email;
     req.session.name = user.name;
     req.session.userId = user.id;
+    req.session.rol = user.rol;
     req.session.logginDate = new Date();
     res.redirect('/destinos');
     }else{
@@ -55,7 +56,16 @@ router.post('/register', async (req, res) => {
 
   if(isRegistered){
     res.redirect('/users/login');
-  };
+  }else{
+    req.flash('error', 'No se pudo registrar correctamente')
+    res.redirect('/register');
+  }
 });
+
+router.get('/destroy', async (req, res) => {
+  req.flash('Has salido correctamente')
+  req.session.destroy();
+  res.redirect('/destinos');
+})
 
 module.exports = router;

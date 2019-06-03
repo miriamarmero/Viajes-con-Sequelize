@@ -16,5 +16,9 @@
     </div> --}}
     <input type="text" name="email" placeholder="type your email">
     <input type="password" name="password" id="password" placeholder="password">
-    <button type="submit">Login</button>
+    {{#if req.session.name}}
+        {{req.session.name}}
+    {{else}}
+        <button type="submit">Login</button>
+    {{/if}}
 </form>

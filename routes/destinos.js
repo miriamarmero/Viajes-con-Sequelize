@@ -13,12 +13,22 @@ router.get('/', async (req, res) => {
 
 // Post que se llama desde el formulario
 router.post('/', async (req, res) => {
-    let result = await travelsController.addDestino(req.body.destino, req.body.precio, req.body.descuento, req.body.ruta_imagen, req.body.fecha_inicio, req.body.fecha_fin);
-    res.render('destinos/added', {result});
+    if (req.session.rol == 'admin'){
+        let result = await travelsController.addDestino(req.body.destino, req.body.precio, req.body.descuento, req.body.ruta_imagen, req.body.fecha_inicio, req.body.fecha_fin);
+        res.render('destinos/added', {result});  
+    }else{
+        req.flash('permisos', 'No tienes permiso en esta area');
+    }
+    
 })
 
 router.get('/add', (req, res) => {
-    res.render('destinos/add');
-})
+    if(req.session.rol == 'admin'){
+        res.render('destinos/add');  
+    }else{
+        req.flash('permisos', 'No tienes permiso en esta area');
+    }
+    
+});
 
 module.exports = router;

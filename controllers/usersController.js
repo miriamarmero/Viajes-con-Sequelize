@@ -8,10 +8,12 @@ async function checkLogin(email, password){
     });
 
     if(users.length === 0){
-        return(null)
+        return null
     }else{
         let match = await bcrypt.compare(password,users[0].password);
-        return(match ? users[0] : null);
+        console.log('you did it!', match);
+        console.log('user', users[0].id);
+        return match ? users[0] : null;
     };
 };
 

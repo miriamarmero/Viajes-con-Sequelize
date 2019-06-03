@@ -21,6 +21,11 @@ app.use(session({
 }));
 app.use(flash());
 
+app.use((req, res, next) => {
+  res.locals.user = req.session;
+  next();
+});
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');

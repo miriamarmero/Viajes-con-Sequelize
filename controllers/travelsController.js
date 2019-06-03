@@ -1,11 +1,11 @@
 const models = require('../models')
 
 function getDestinos(){
-    return models.travel.findAll()
-}
+    return models.destinos.findAll().catch();
+};
 
 function addDestino(destino){
-    return models.travel.create(destino);
+    return models.destinos.create(destino);
 };
 
 module.exports = {

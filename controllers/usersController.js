@@ -3,7 +3,7 @@ const bcrypt = require('bcrypt');
 const SALT_ROUNDS = 10;
 
 async function checkLogin(email, password){
-    let users = await models.user.findAll({
+    let users = await models.users.findAll({
         where: {email: email}
     });
 
@@ -22,7 +22,7 @@ async function register(email, password, name){
         email,
         name,
     };
-    return models.user.create(user);
+    return models.users.create(user);
 };
 
 module.exports = {

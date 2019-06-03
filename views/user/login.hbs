@@ -2,7 +2,7 @@
     <p>ERROR: {{error}}</p>
 {{/if}}
 <form action="/users/login" method="post">
-    <div class="form-group row">
+    {{!-- <div class="form-group row">
         <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
         <div class="col-sm-10">
             <input type="text" readonly class="form-control-plaintext" id="staticEmail" name="email" value="email@example.com">
@@ -13,8 +13,8 @@
         <div class="col-sm-10">
             <input type="password" class="form-control" id="inputPassword" name="password" placeholder="Password">
         </div>
-    </div>
-    {{!-- <input type="text" name="email" placeholder="type your email">
-    <input type="password" name="password" id="password" placeholder="password"> --}}
+    </div> --}}
+    <input type="text" name="email" placeholder="type your email">
+    <input type="password" name="password" id="password" placeholder="password">
     <button type="submit">Login</button>
 </form>

@@ -14,7 +14,6 @@ router.get('/', async (req, res) => {
 // Post que se llama desde el formulario
 router.post('/', async (req, res) => {
     let result = await travelsController.addDestino(req.body);
-
     res.render('destinos/added', {result});
 })
 

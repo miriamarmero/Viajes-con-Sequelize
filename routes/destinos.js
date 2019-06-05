@@ -27,6 +27,7 @@ router.get('/add', (req, res) => {
         res.render('destinos/add');  
     }else{
         req.flash('permisos', 'No tienes permiso en esta area');
+        res.redirect('/destinos');
     }
     
 });

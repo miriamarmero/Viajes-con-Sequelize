@@ -10,6 +10,7 @@ var hbs= require('hbs');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var destinosRouter = require('./routes/destinos');
+var destinosApiRouter = require('./routes/API/destinosApi');
 
 var app = express();
 
@@ -19,6 +20,7 @@ app.use(session({
   resave: true,
   saveUninitialized: true,
 }));
+
 app.use(flash());
 
 app.use((req, res, next) => {
@@ -39,6 +41,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/destinos', destinosRouter);
+app.use('/api/destinos', destinosApiRouter);
+
 app.use('/components', express.static(`${__dirname}/public/components`));
 
 // catch 404 and forward to error handler

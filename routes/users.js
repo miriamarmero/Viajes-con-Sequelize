@@ -12,7 +12,7 @@ router.post('/login', async (req, res) => {
   let password = req.body.password;
 
   if(!email || !password){
-    req.flash('errors', 'Falta usuario o contraseña');
+    req.flash('errores', 'Falta usuario o contraseña');
     res.redirect('/users/login')
   }else{
     let user = await usersController.checkLogin(email, password);
@@ -25,27 +25,27 @@ router.post('/login', async (req, res) => {
     req.session.logginDate = new Date();
     res.redirect('/destinos');
     }else{
-      req.flash('errors', 'Usuario o contraseña no válidos');
+      req.flash('errores', 'Usuario o contraseña no válidos');
       res.redirect('/users/login');
     }
   }
 });
 
 router.get('/login', (req, res) => {
-  let error = req.flash('errors');
-  if(req.session.name){
+  let errores = req.flash('errores');
+  if(req.session.email){
     res.redirect('/destinos');
   }else{
     res.render('user/login', {
-      error
+      errores
     });
   };
 });
 
 router.get('/register', (req, res) => {
-  let error = req.flash('error');
+  let errores = req.flash('errores', 'No es posible registrarse');
   res.render('user/register', {
-    error
+    errores
   });
 });
 
@@ -55,15 +55,16 @@ router.post('/register', async (req, res) => {
   let isRegistered = await usersController.register(email, password, name);
 
   if(isRegistered){
+    req.flash('mensajeRegistro', 'Enhorabuena! Te has registrado correctamente');
     res.redirect('/users/login');
   }else{
-    req.flash('error', 'No se pudo registrar correctamente')
+    req.flash('errores', 'No se pudo registrar correctamente')
     res.redirect('/register');
   }
 });
 
 router.get('/destroy', async (req, res) => {
-  req.flash('Has salido correctamente')
+  req.flash('mensajeRegistro', 'Has salido correctamente')
   req.session.destroy();
   res.redirect('/destinos');
 })

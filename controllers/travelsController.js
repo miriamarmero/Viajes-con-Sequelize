@@ -1,7 +1,11 @@
 const models = require('../models')
 
 function getDestinos(){
-    return models.destinos.findAll().catch();
+    return models.destinos.findAll({
+        include: [{
+              model: models.users,
+            }]
+    }).catch();
 };
 
 function addDestino(destino){

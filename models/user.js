@@ -5,14 +5,12 @@ module.exports = (sequelize, DataTypes) => {
         email: DataTypes.STRING,
         password: DataTypes.STRING,
         rol: DataTypes.ENUM('admin', 'user')
-    },
+    })
     
-    {uniqueKeys: {
-        Items_unique: {
-            fields: ['email']
-        }
-    }});
-
+ 
+    users.associate = function(models){
+        models.users.hasMany(models.destinos)
+    }
     
     return users;
 };

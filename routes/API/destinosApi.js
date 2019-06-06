@@ -10,8 +10,8 @@ router.get('/', async (req, res) => {
     res.send(destinos);
 });
 
-router.post('/', (req, res) => {
-    let destino = travelsController.addDestino(req.body);
+router.post('/', async (req, res) => {
+    let destino = await travelsController.addDestino(req.body);
     res.send(destino);
 });
 
